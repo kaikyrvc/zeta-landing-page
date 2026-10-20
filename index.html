@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZETA PLAY | Mais Entretenimento, Menos Gastos - R$ 25/mês</title>
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Ícones FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    body {
+      background-color: #0b0f19;
+      color: #f8fafc;
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+    .hero-gradient {
+      background: radial-gradient(circle at top, rgba(99, 102, 241, 0.25) 0%, rgba(11, 15, 25, 1) 70%);
+    }
+    .card-hover {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 15px 30px -5px rgba(99, 102, 241, 0.3);
+    }
+    .imdb-badge {
+      background-color: #f5c518;
+      color: #000;
+      font-weight: 800;
+    }
+    @keyframes pulse-glow {
+      0%, 100% {
+        box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.4);
+      }
+      50% {
+        box-shadow: 0 0 0 10px rgba(251, 191, 36, 0);
+      }
+    }
+    .promo-glow {
+      animation: pulse-glow 2s infinite;
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-indigo-600 selection:text-white">
+
+  <!-- ================= NAVBAR ================= -->
+  <header class="fixed top-0 w-full z-40 bg-slate-950/85 backdrop-blur-md border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-2.5">
+        <span class="text-2xl">📺</span>
+        <span class="font-extrabold text-2xl tracking-wider bg-gradient-to-r from-indigo-400 via-purple-400 to-emerald-400 bg-clip-text text-transparent">
+          ZETA PLAY
+        </span>
+      </div>
+      <nav class="hidden md:flex space-x-8 text-sm font-medium text-slate-300">
+        <a href="#vantagens" class="hover:text-white transition">O que inclui</a>
+        <a href="#catalogo" class="hover:text-white transition">Catálogo & Trailers (IMDb)</a>
+        <a href="#economia" class="hover:text-white transition">Calculadora de Economia</a>
+        <a href="#plano" class="hover:text-white transition">Preço</a>
+      </nav>
+      <a href="#" onclick="abrirWhatsApp('Olá! Quero solicitar meu TESTE GRÁTIS na ZETA PLAY!')"
+         class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-4 py-2 rounded-full text-sm transition shadow-lg shadow-emerald-500/20 flex items-center gap-2">
+        <i class="fa-brands fa-whatsapp text-lg"></i> Teste Grátis
+      </a>
+    </div>
+  </header>
+
+  <!-- ================= HERO SECTION ================= -->
+  <section class="hero-gradient pt-28 pb-16 md:pt-36 md:pb-24 px-4">
+    <div class="max-w-6xl mx-auto text-center">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 text-sm font-semibold mb-6">
+        <span>🍿⚽</span> MAIS ENTRETENIMENTO, MENOS GASTOS TODO MÊS!
+      </div>
+      
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-tight mb-6 max-w-5xl mx-auto">
+        Filmes, Séries, Canais ao Vivo e Futebol em <span class="bg-gradient-to-r from-indigo-400 via-purple-400 to-emerald-400 bg-clip-text text-transparent">um só aplicativo!</span>
+      </h1>
+      
+      <p class="text-lg sm:text-xl text-slate-300 max-w-3xl mx-auto mb-8">
+        Que tal reunir todo o seu entretenimento na <strong class="text-white">ZETA PLAY</strong> pagando apenas <strong class="text-emerald-400 font-extrabold text-2xl">R$ 25 por mês</strong>? Transparência e praticidade sem pesar no seu bolso.
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <button onclick="abrirWhatsApp('Olá! Vi o site da ZETA PLAY e gostaria de pedir o meu TESTE GRÁTIS sem compromisso!')"
+           class="w-full sm:w-auto bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-lg px-8 py-4 rounded-xl shadow-xl shadow-emerald-500/25 transition transform hover:scale-105 flex items-center justify-center gap-3">
+          <i class="fa-brands fa-whatsapp text-2xl"></i>
+          🎁 Solicitar Teste Grátis Agora
+        </button>
+        <a href="#catalogo"
+           class="w-full sm:w-auto bg-slate-800 hover:bg-slate-700 text-white font-semibold text-lg px-8 py-4 rounded-xl border border-slate-700 transition flex items-center justify-center gap-2">
+          <i class="fa-solid fa-film text-indigo-400"></i> Ver Catálogo e Trailers
+        </a>
+      </div>
+
+      <p class="text-xs text-slate-400 mt-4">
+        ✅ Teste grátis sem compromisso • ✅ Funciona na Smart TV, Celular, TV Box e Computador
+      </p>
+
+      <!-- ================= PLATAFORMAS EM DESTAQUE MAIOR ================= -->
+      <div class="mt-16 pt-10 border-t border-slate-800/90">
+        <p class="text-sm sm:text-base uppercase tracking-widest text-slate-200 mb-7 font-extrabold">
+          ✨ Acesso a conteúdos das principais plataformas conforme disponibilidade:
+        </p>
+        <div class="flex flex-wrap justify-center gap-4 sm:gap-5 max-w-5xl mx-auto">
+          <span class="px-6 py-3.5 rounded-2xl bg-red-600/30 border-2 border-red-500 text-white font-extrabold text-lg sm:text-xl shadow-lg shadow-red-600/30 hover:scale-105 transition transform cursor-default">
+            Netflix
+          </span>
+          <span class="px-6 py-3.5 rounded-2xl bg-sky-500/30 border-2 border-sky-400 text-white font-extrabold text-lg sm:text-xl shadow-lg shadow-sky-500/30 hover:scale-105 transition transform cursor-default">
+            Amazon Prime Video
+          </span>
+          <span class="px-6 py-3.5 rounded-2xl bg-orange-500/30 border-2 border-orange-400 text-white font-extrabold text-lg sm:text-xl shadow-lg shadow-orange-500/30 hover:scale-105 transition transform cursor-default">
+            Globoplay
+          </span>
+          <span class="px-6 py-3.5 rounded-2xl bg-blue-600/30 border-2 border-blue-400 text-white font-extrabold text-lg sm:text-xl shadow-lg shadow-blue-600/30 hover:scale-105 transition transform cursor-default">
+            Disney+
+          </span>
+          <span class="px-6 py-3.5 rounded-2xl bg-purple-600/30 border-2 border-purple-400 text-white font-extrabold text-lg sm:text-xl shadow-lg shadow-purple-600/30 hover:scale-105 transition transform cursor-default">
+            Max
+          </span>
+          <span class="px-6 py-3.5 rounded-2xl bg-indigo-500/30 border-2 border-indigo-400 text-white font-extrabold text-lg sm:text-xl shadow-lg shadow-indigo-500/30 hover:scale-105 transition transform cursor-default">
+            Paramount+
+          </span>
+          <span class="px-6 py-3.5 rounded-2xl bg-slate-700/60 border-2 border-slate-300 text-white font-extrabold text-lg sm:text-xl shadow-lg shadow-slate-400/20 hover:scale-105 transition transform cursor-default">
+            Apple TV+
+          </span>
+          <span class="px-6 py-3.5 rounded-2xl bg-amber-500/30 border-2 border-amber-400 text-white font-extrabold text-lg sm:text-xl shadow-lg shadow-amber-500/30 hover:scale-105 transition transform cursor-default">
+            Crunchyroll
+          </span>
+          <span class="px-6 py-3.5 rounded-2xl bg-rose-600/30 border-2 border-rose-400 text-white font-extrabold text-lg sm:text-xl shadow-lg shadow-rose-600/30 hover:scale-105 transition transform cursor-default">
+            Telecine Play
+          </span>
+          <span class="px-6 py-3.5 rounded-2xl bg-emerald-600/35 border-2 border-emerald-400 text-emerald-200 font-extrabold text-lg sm:text-xl shadow-lg shadow-emerald-500/30 hover:scale-105 transition transform cursor-default">
+            ⚽ Futebol Ao Vivo
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= VANTAGENS (TUDO EM UM SÓ LUGAR) ================= -->
+  <section id="vantagens" class="py-16 bg-slate-900/50 border-y border-slate-800/70 px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-extrabold mb-3">🎬 Tudo em um só lugar</h2>
+        <p class="text-slate-400">Chega de trocar de aplicativo ou pagar várias faturas todo mês.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800 card-hover">
+          <div class="w-12 h-12 rounded-xl bg-indigo-500/20 text-indigo-400 flex items-center justify-center text-2xl mb-4">
+            <i class="fa-solid fa-tv"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Canais de TV ao Vivo</h3>
+          <p class="text-slate-400 text-sm">Canais abertos e fechados de filmes, notícias, infantil, documentários e variedades 24h no ar.</p>
+        </div>
+
+        <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800 card-hover">
+          <div class="w-12 h-12 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center text-2xl mb-4">
+            <i class="fa-solid fa-clapperboard"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Filmes e Séries On-Demand</h3>
+          <p class="text-slate-400 text-sm">Assista quando quiser! Dos lançamentos do cinema às séries e animes mais maratonados do mundo.</p>
+        </div>
+
+        <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800 card-hover">
+          <div class="w-12 h-12 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-2xl mb-4">
+            <i class="fa-solid fa-futbol"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Futebol e Esportes</h3>
+          <p class="text-slate-400 text-sm">Acompanhe Brasileirão, Libertadores, Champions League, lutas e toda a programação esportiva.</p>
+        </div>
+
+        <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800 card-hover">
+          <div class="w-12 h-12 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-2xl mb-4">
+            <i class="fa-solid fa-gift"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Teste Grátis Real</h3>
+          <p class="text-slate-400 text-sm">Experimente antes de contratar! Confira a programação e veja como roda liso no seu aparelho.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CATÁLOGO IMDb & TRAILERS ================= -->
+  <section id="catalogo" class="py-20 px-4 max-w-7xl mx-auto">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
+      <div>
+        <div class="inline-flex items-center gap-2 mb-2">
+          <span class="imdb-badge px-2.5 py-0.5 rounded text-xs uppercase tracking-wider">IMDb</span>
+          <span class="text-sm text-amber-400 font-semibold">Destaques & Trailers</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold">Explore o que você pode assistir</h2>
+        <p class="text-slate-400 mt-1">Confira as notas no IMDb e assista aos trailers oficiais dos sucessos disponíveis na ZETA PLAY.</p>
+      </div>
+
+      <!-- Busca e Filtros -->
+      <div class="flex flex-col sm:flex-row gap-3">
+        <div class="relative">
+          <input type="text" id="searchInput" oninput="filtrarCatalogo()" placeholder="Buscar filme ou série..."
+                 class="w-full sm:w-64 bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 pl-10 text-sm text-white focus:outline-none focus:border-indigo-500" />
+          <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3 text-slate-400 text-sm"></i>
+        </div>
+        <div class="flex bg-slate-900 p-1 rounded-xl border border-slate-800">
+          <button onclick="setCategoria('todos')" id="btn-todos" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-indigo-600 text-white transition">Todos</button>
+          <button onclick="setCategoria('filme')" id="btn-filme" class="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-400 hover:text-white transition">Filmes</button>
+          <button onclick="setCategoria('serie')" id="btn-serie" class="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-400 hover:text-white transition">Séries</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Grid de Filmes -->
+    <div id="moviesGrid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5 sm:gap-6">
+      <!-- Renderizado via JavaScript -->
+    </div>
+  </section>
+
+  <!-- ================= CALCULADORA INTERATIVA DE ECONOMIA ================= -->
+  <section id="economia" class="py-16 bg-gradient-to-b from-slate-900 to-slate-950 border-t border-slate-800 px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-10">
+        <span class="text-emerald-400 font-bold text-sm uppercase tracking-wider">💰 Economize no seu entretenimento</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold mt-2">Quanto você gasta hoje? Faça o teste!</h2>
+        <p class="text-slate-400 mt-2">Selecione abaixo as assinaturas que você gostaria de ter e veja a diferença:</p>
+      </div>
+
+      <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl">
+        <!-- Botões rápidos de seleção -->
+        <div class="flex items-center justify-between mb-4 pb-3 border-b border-slate-800">
+          <span class="text-xs sm:text-sm font-semibold text-slate-300">Escolha as plataformas para comparar:</span>
+          <div class="flex gap-2">
+            <button onclick="selecionarTodas(true)" class="text-xs bg-indigo-600/20 hover:bg-indigo-600/40 text-indigo-300 border border-indigo-500/30 px-3 py-1.5 rounded-lg font-semibold transition">
+              Marcar Todas
+            </button>
+            <button onclick="selecionarTodas(false)" class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 px-3 py-1.5 rounded-lg font-semibold transition">
+              Limpar
+            </button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <!-- Checkboxes de Streamings (10 Opções em 2 Colunas) -->
+          <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-3" id="streamingCheckboxes">
+            <!-- 1. Netflix -->
+            <label class="flex items-center justify-between p-3.5 rounded-xl bg-slate-800/60 border border-slate-700 cursor-pointer hover:border-indigo-500 transition">
+              <div class="flex items-center gap-3">
+                <input type="checkbox" checked value="44.90" onchange="calcularEconomia()" class="w-5 h-5 accent-indigo-500 rounded" />
+                <span class="font-semibold text-sm">Netflix (Padrão)</span>
+              </div>
+              <span class="text-slate-400 text-xs font-medium">R$ 44,90</span>
+            </label>
+
+            <!-- 2. Amazon Prime Video -->
+            <label class="flex items-center justify-between p-3.5 rounded-xl bg-slate-800/60 border border-slate-700 cursor-pointer hover:border-indigo-500 transition">
+              <div class="flex items-center gap-3">
+                <input type="checkbox" checked value="19.90" onchange="calcularEconomia()" class="w-5 h-5 accent-indigo-500 rounded" />
+                <span class="font-semibold text-sm">Amazon Prime Video</span>
+              </div>
+              <span class="text-slate-400 text-xs font-medium">R$ 19,90</span>
+            </label>
+
+            <!-- 3. Pacote Futebol / Esportes -->
+            <label class="flex items-center justify-between p-3.5 rounded-xl bg-slate-800/60 border border-slate-700 cursor-pointer hover:border-indigo-500 transition">
+              <div class="flex items-center gap-3">
+                <input type="checkbox" checked value="59.90" onchange="calcularEconomia()" class="w-5 h-5 accent-indigo-500 rounded" />
+                <span class="font-semibold text-sm">Pacote Futebol / Esportes</span>
+              </div>
+              <span class="text-slate-400 text-xs font-medium">R$ 59,90</span>
+            </label>
+
+            <!-- 4. Max (HBO) -->
+            <label class="flex items-center justify-between p-3.5 rounded-xl bg-slate-800/60 border border-slate-700 cursor-pointer hover:border-indigo-500 transition">
+              <div class="flex items-center gap-3">
+                <input type="checkbox" checked value="39.90" onchange="calcularEconomia()" class="w-5 h-5 accent-indigo-500 rounded" />
+                <span class="font-semibold text-sm">Max (HBO)</span>
+              </div>
+              <span class="text-slate-400 text-xs font-medium">R$ 39,90</span>
+            </label>
+
+            <!-- 5. Disney+ -->
+            <label class="flex items-center justify-between p-3.5 rounded-xl bg-slate-800/60 border border-slate-700 cursor-pointer hover:border-indigo-500 transition">
+              <div class="flex items-center gap-3">
+                <input type="checkbox" value="43.90" onchange="calcularEconomia()" class="w-5 h-5 accent-indigo-500 rounded" />
+                <span class="font-semibold text-sm">Disney+</span>
+              </div>
+              <span class="text-slate-400 text-xs font-medium">R$ 43,90</span>
+            </label>
+
+            <!-- 6. Globoplay + Canais -->
+            <label class="flex items-center justify-between p-3.5 rounded-xl bg-slate-800/60 border border-slate-700 cursor-pointer hover:border-indigo-500 transition">
+              <div class="flex items-center gap-3">
+                <input type="checkbox" value="54.90" onchange="calcularEconomia()" class="w-5 h-5 accent-indigo-500 rounded" />
+                <span class="font-semibold text-sm">Globoplay + Canais</span>
+              </div>
+              <span class="text-slate-400 text-xs font-medium">R$ 54,90</span>
+            </label>
+
+            <!-- 7. Apple TV+ -->
+            <label class="flex items-center justify-between p-3.5 rounded-xl bg-slate-800/60 border border-slate-700 cursor-pointer hover:border-indigo-500 transition">
+              <div class="flex items-center gap-3">
+                <input type="checkbox" value="21.90" onchange="calcularEconomia()" class="w-5 h-5 accent-indigo-500 rounded" />
+                <span class="font-semibold text-sm">Apple TV+</span>
+              </div>
+              <span class="text-slate-400 text-xs font-medium">R$ 21,90</span>
+            </label>
+
+            <!-- 8. Paramount+ -->
+            <label class="flex items-center justify-between p-3.5 rounded-xl bg-slate-800/60 border border-slate-700 cursor-pointer hover:border-indigo-500 transition">
+              <div class="flex items-center gap-3">
+                <input type="checkbox" value="27.90" onchange="calcularEconomia()" class="w-5 h-5 accent-indigo-500 rounded" />
+                <span class="font-semibold text-sm">Paramount+</span>
+              </div>
+              <span class="text-slate-400 text-xs font-medium">R$ 27,90</span>
+            </label>
+
+            <!-- 9. Crunchyroll -->
+            <label class="flex items-center justify-between p-3.5 rounded-xl bg-slate-800/60 border border-slate-700 cursor-pointer hover:border-indigo-500 transition">
+              <div class="flex items-center gap-3">
+                <input type="checkbox" value="19.90" onchange="calcularEconomia()" class="w-5 h-5 accent-indigo-500 rounded" />
+                <span class="font-semibold text-sm">Crunchyroll</span>
+              </div>
+              <span class="text-slate-400 text-xs font-medium">R$ 19,90</span>
+            </label>
+
+            <!-- 10. Telecine Play -->
+            <label class="flex items-center justify-between p-3.5 rounded-xl bg-slate-800/60 border border-slate-700 cursor-pointer hover:border-indigo-500 transition">
+              <div class="flex items-center gap-3">
+                <input type="checkbox" value="29.90" onchange="calcularEconomia()" class="w-5 h-5 accent-indigo-500 rounded" />
+                <span class="font-semibold text-sm">Telecine Play</span>
+              </div>
+              <span class="text-slate-400 text-xs font-medium">R$ 29,90</span>
+            </label>
+          </div>
+
+          <!-- Resultado da Economia -->
+          <div class="lg:col-span-5 bg-slate-950 p-6 rounded-2xl border border-slate-800 text-center space-y-5">
+            <div>
+              <p class="text-sm text-slate-400">Pagando assinaturas separadas:</p>
+              <p id="totalSeparado" class="text-2xl font-bold text-red-400 line-through">R$ 164,60 /mês</p>
+            </div>
+
+            <div class="py-4 border-y border-slate-800">
+              <p class="text-sm text-slate-300">Na <strong class="text-indigo-400">ZETA PLAY</strong> (Tudo-em-Um):</p>
+              <p class="text-4xl font-extrabold text-emerald-400 mt-1">R$ 25,00 <span class="text-base font-normal text-slate-400">/mês</span></p>
+            </div>
+
+            <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-4">
+              <p class="text-xs uppercase tracking-wider text-emerald-300 font-bold">Sua economia total:</p>
+              <p id="economiaMensal" class="text-2xl font-extrabold text-white mt-1">R$ 139,60 por mês</p>
+              <p id="economiaAnual" class="text-xs text-emerald-400 mt-1">Mais de R$ 1.675,20 no seu bolso por ano!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PLANO & TESTE GRÁTIS ================= -->
+  <section id="plano" class="py-20 px-4">
+    <!-- FAIXA PROMOCIONAL -->
+    <div class="max-w-lg mx-auto mb-4 px-2">
+      <button onclick="abrirPromo()"
+              class="w-full bg-gradient-to-r from-amber-500 to-orange-500 text-slate-950 font-extrabold py-2.5 sm:py-3 rounded-full flex items-center justify-center gap-2 shadow-lg shadow-amber-500/30 hover:scale-[1.02] transition promo-glow text-xs sm:text-sm md:text-base px-3">
+        <span class="animate-pulse text-lg">🔥</span>
+        PROMOÇÃO POR TEMPO LIMITADO • 3 MESES POR R$ 60 • R$ 20/MÊS
+        <span class="animate-pulse text-lg">🔥</span>
+      </button>
+    </div>
+
+    <div class="max-w-lg mx-auto bg-gradient-to-b from-indigo-950/60 to-slate-900 border-2 border-indigo-500/50 rounded-3xl p-8 text-center shadow-2xl relative overflow-hidden">
+      <div class="inline-block bg-indigo-500 text-white text-xs font-extrabold uppercase px-3 py-1 rounded-full mb-4">
+        ZETA PLAY • Plano Completo
+      </div>
+      <h3 class="text-2xl font-extrabold">Acesso Total Mensal</h3>
+      <div class="my-6">
+        <span class="text-5xl font-extrabold text-white">R$ 25</span>
+        <span class="text-slate-400">/mês</span>
+      </div>
+
+      <ul class="text-left space-y-3 text-slate-300 text-sm mb-8">
+        <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-emerald-400"></i> Canais de TV ao vivo abertos e fechados</li>
+        <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-emerald-400"></i> Milhares de Filmes, Séries e Animes para assistir quando quiser</li>
+        <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-emerald-400"></i> Futebol ao vivo e programação esportiva completa</li>
+        <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-emerald-400"></i> Conteúdos de Netflix, Prime, Globoplay, Max, Disney+, Apple TV+, Paramount+, Crunchyroll e Telecine Play</li>
+        <li class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-emerald-400"></i> Sem fidelidade e com suporte rápido</li>
+      </ul>
+
+      <div class="bg-slate-950/80 p-4 rounded-2xl border border-slate-800 mb-6 text-left">
+        <p class="font-bold text-amber-400 text-sm mb-1">🎁 Experimente antes de contratar!</p>
+        <p class="text-xs text-slate-300">
+          Ofereço um <strong>teste grátis</strong> para você conhecer o aplicativo, conferir a programação e verificar se funciona bem no seu aparelho. Sem compromisso!
+        </p>
+      </div>
+
+      <button onclick="abrirWhatsApp('Olá! Quero pedir o meu TESTE GRÁTIS na ZETA PLAY e conhecer o plano de R$ 25/mês!')"
+              class="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold py-4 rounded-xl text-lg transition shadow-lg shadow-emerald-500/25 flex items-center justify-center gap-2">
+        <i class="fa-brands fa-whatsapp text-2xl"></i>
+        📲 Me chame para o Teste Grátis!
+      </button>
+    </div>
+  </section>
+
+  <!-- ================= MODAL DE TRAILER ================= -->
+  <div id="trailerModal" class="fixed inset-0 z-50 hidden bg-black/85 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-3xl w-full overflow-hidden shadow-2xl">
+      <div class="flex items-center justify-between px-5 py-3.5 border-b border-slate-800">
+        <h3 id="modalTitle" class="font-bold text-lg text-white">Trailer Oficial</h3>
+        <button onclick="fecharModal()" class="text-slate-400 hover:text-white text-xl px-2">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="relative w-full aspect-video bg-black">
+        <iframe id="trailerIframe" class="w-full h-full" src="" title="Trailer" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="p-4 bg-slate-950 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <span class="text-xs text-slate-400">Gostou? Assista completo na ZETA PLAY!</span>
+        <button onclick="abrirWhatsApp('Olá! Vi o trailer no site da ZETA PLAY e quero solicitar meu TESTE GRÁTIS!')"
+                class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs px-4 py-2 rounded-lg">
+          📲 Pedir Teste Grátis para Assistir
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MODAL DE PROMOÇÃO ================= -->
+  <div id="promoModal" class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-sm flex items-center justify-center p-4" onclick="fecharPromo(event)">
+    <div class="bg-gradient-to-b from-slate-900 to-slate-950 border-2 border-amber-500 rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl relative promo-glow" onclick="event.stopPropagation()">
+      <!-- Cabeçalho -->
+      <div class="bg-gradient-to-r from-amber-500 to-orange-500 px-5 py-4 text-center relative">
+        <button onclick="fecharPromo()" class="absolute right-4 top-4 text-slate-950 hover:text-white text-2xl leading-none">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <h3 class="font-extrabold text-xl sm:text-2xl text-slate-950 uppercase tracking-wide">
+          🔥 PROMOÇÃO POR TEMPO LIMITADO 🔥
+        </h3>
+        <p class="text-slate-950/90 text-xs sm:text-sm font-bold mt-1">Não perca essa oportunidade!</p>
+      </div>
+
+      <!-- Conteúdo -->
+      <div class="p-6 sm:p-8 text-center space-y-6">
+        <!-- Título da Promoção -->
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-white leading-tight">
+            3 MESES DE ZETA PLAY
+          </h2>
+          <p class="text-amber-400 font-extrabold text-4xl sm:text-5xl mt-2">
+            POR R$ 60,00
+          </p>
+          <p class="text-slate-300 font-semibold text-lg mt-2">
+            Equivale a <span class="text-emerald-400 font-extrabold">R$ 20,00 por mês</span>
+          </p>
+        </div>
+
+        <!-- Comparativo de Economia -->
+        <div class="bg-slate-950/80 border border-slate-800 rounded-2xl p-4 space-y-2">
+          <div class="flex items-center justify-center gap-2 text-slate-400">
+            <span class="line-through text-base sm:text-lg">De R$ 75,00 por 3 meses</span>
+          </div>
+          <div class="flex items-center justify-center gap-2">
+            <i class="fa-solid fa-arrow-down text-emerald-400 text-xl"></i>
+            <span class="text-emerald-400 font-extrabold text-xl sm:text-2xl">Por R$ 60,00</span>
+          </div>
+          <p class="text-xs text-emerald-300 font-semibold uppercase tracking-wider">
+            Você economiza R$ 15,00 nos 3 meses!
+          </p>
+        </div>
+
+        <!-- Contador Regressivo -->
+        <div class="bg-amber-500/10 border border-amber-500/40 rounded-2xl p-4">
+          <p class="text-amber-300 text-xs sm:text-sm font-bold uppercase tracking-wider mb-3">
+            <i class="fa-solid fa-hourglass-half"></i> Essa promoção termina em:
+          </p>
+          <div class="flex items-center justify-center gap-2 sm:gap-3 text-white">
+            <div class="flex flex-col items-center">
+              <span id="promoHoras" class="bg-slate-950 px-3 sm:px-4 py-2 rounded-lg font-extrabold text-2xl sm:text-3xl border border-amber-500/40">00</span>
+              <span class="text-[10px] sm:text-xs text-slate-400 mt-1 uppercase">Horas</span>
+            </div>
+            <span class="text-2xl sm:text-3xl font-bold text-amber-400 -mt-4">:</span>
+            <div class="flex flex-col items-center">
+              <span id="promoMinutos" class="bg-slate-950 px-3 sm:px-4 py-2 rounded-lg font-extrabold text-2xl sm:text-3xl border border-amber-500/40">00</span>
+              <span class="text-[10px] sm:text-xs text-slate-400 mt-1 uppercase">Minutos</span>
+            </div>
+            <span class="text-2xl sm:text-3xl font-bold text-amber-400 -mt-4">:</span>
+            <div class="flex flex-col items-center">
+              <span id="promoSegundos" class="bg-slate-950 px-3 sm:px-4 py-2 rounded-lg font-extrabold text-2xl sm:text-3xl border border-amber-500/40">00</span>
+              <span class="text-[10px] sm:text-xs text-slate-400 mt-1 uppercase">Segundos</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lista de Benefícios -->
+        <ul class="text-left space-y-2 text-slate-300 text-sm sm:text-base">
+          <li class="flex items-center gap-2 sm:gap-3">
+            <i class="fa-solid fa-circle-check text-emerald-400"></i>
+            <span>Acesso completo por <strong>3 meses</strong></span>
+          </li>
+          <li class="flex items-center gap-2 sm:gap-3">
+            <i class="fa-solid fa-circle-check text-emerald-400"></i>
+            <span>Todos os conteúdos + Futebol ao vivo</span>
+          </li>
+          <li class="flex items-center gap-2 sm:gap-3">
+            <i class="fa-solid fa-circle-check text-emerald-400"></i>
+            <span>Funciona em Smart TV, Celular, TV Box e PC</span>
+          </li>
+          <li class="flex items-center gap-2 sm:gap-3">
+            <i class="fa-solid fa-circle-check text-emerald-400"></i>
+            <span>Sem fidelidade • Contrato simplificado</span>
+          </li>
+        </ul>
+
+        <!-- CTA WhatsApp -->
+        <button onclick="abrirWhatsApp('Olá! Quero aproveitar a PROMOÇÃO POR TEMPO LIMITADO da ZETA PLAY: Plano 3 meses por R$ 60 (R$ 20/mês)!')"
+                class="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold py-4 rounded-xl text-base sm:text-lg transition shadow-lg shadow-emerald-500/25 flex items-center justify-center gap-2">
+          <i class="fa-brands fa-whatsapp text-2xl"></i>
+          QUERO APROVEITAR ESSA PROMOÇÃO AGORA!
+        </button>
+
+        <p class="text-[11px] sm:text-xs text-slate-400">
+          Promoção válida por tempo limitado. Aproveite enquanto dura!
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= RODAPÉ ================= -->
+  <footer class="py-8 border-t border-slate-900 text-center text-xs text-slate-500 px-4">
+    <p>Transparência e praticidade para aproveitar seu entretenimento sem pesar no bolso.</p>
+    <p class="mt-2 font-semibold text-slate-400">© 2026 ZETA PLAY - Todos os direitos reservados.</p>
+  </footer>
+
+  <!-- ================= SCRIPTS E INTEGRAÇÃO IMDb / TMDB ================= -->
+  <script>
+    // =========================================================================
+    // 1. CONFIGURAÇÃO DO SEU WHATSAPP E API (EDITE AQUI)
+    // =========================================================================
+    const SEU_NUMERO_WHATSAPP = "5561998620122"; // (61) 99862-0122 com DDI 55
+    const TMDB_API_KEY = "82dca13cc8a98e682d997056cd3cc68c"; // Chave oficial do TMDB configurada
+
+    function abrirWhatsApp(mensagem) {
+      let numero = SEU_NUMERO_WHATSAPP.replace(/\D/g, "");
+      if (!numero.startsWith("55")) {
+        numero = "55" + numero;
+      }
+      const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
+      window.open(url, '_blank');
+    }
+
+    // =========================================================================
+    // 2. CATÁLOGO PRÉ-CARREGADO COM NOTAS IMDb, BANNERS E TRAILERS
+    // =========================================================================
+    let catalogoFilmes = [
+      {
+        titulo: "Duna: Parte Dois",
+        tipo: "filme",
+        ano: "2024",
+        notaImdb: "8.5",
+        imdbId: "tt15239678",
+        plataforma: "Max / Prime",
+        poster: "https://image.tmdb.org/t/p/w500/8b8R8l88Qje9dn9OE8PY05Nxl1X.jpg",
+        youtubeEmbed: "https://www.youtube.com/embed/Way9Dexny3w"
+      },
+      {
+        titulo: "Deadpool & Wolverine",
+        tipo: "filme",
+        ano: "2024",
+        notaImdb: "7.7",
+        imdbId: "tt6263850",
+        plataforma: "Disney+",
+        poster: "https://image.tmdb.org/t/p/w500/8cdWjvZQUExUUTzyp4t6EDMubfO.jpg",
+        youtubeEmbed: "https://www.youtube.com/embed/dEbe0rS4Z2A"
+      },
+      {
+        titulo: "The Last of Us",
+        tipo: "serie",
+        ano: "2023",
+        notaImdb: "8.7",
+        imdbId: "tt3581920",
+        plataforma: "Max",
+        poster: "https://image.tmdb.org/t/p/w500/uKvVjHNqB5VmOrdxqAt2F7J78ED.jpg",
+        youtubeEmbed: "https://www.youtube.com/embed/uLtkt8BonwM"
+      },
+      {
+        titulo: "Oppenheimer",
+        tipo: "filme",
+        ano: "2023",
+        notaImdb: "8.9",
+        imdbId: "tt15398776",
+        plataforma: "Prime / Telecine",
+        poster: "https://image.tmdb.org/t/p/w500/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg",
+        youtubeEmbed: "https://www.youtube.com/embed/uYPbbksJxIg"
+      },
+      {
+        titulo: "The Boys",
+        tipo: "serie",
+        ano: "2024",
+        notaImdb: "8.7",
+        imdbId: "tt1190634",
+        plataforma: "Prime Video",
+        poster: "https://image.tmdb.org/t/p/w500/2zmTngn1tYC1AvfnrFLhxeD82hz.jpg",
+        youtubeEmbed: "https://www.youtube.com/embed/M1bhOaLV4FU"
+      },
+      {
+        titulo: "Round 6 (Squid Game)",
+        tipo: "serie",
+        ano: "2024",
+        notaImdb: "8.0",
+        imdbId: "tt10919420",
+        plataforma: "Netflix",
+        poster: "https://image.tmdb.org/t/p/w500/dDlEmu3EZ0Pgg93K2SVNLCjCSvE.jpg",
+        youtubeEmbed: "https://www.youtube.com/embed/oqxAJKy0ii4"
+      },
+      {
+        titulo: "Gladiador II",
+        tipo: "filme",
+        ano: "2024",
+        notaImdb: "6.8",
+        imdbId: "tt9218128",
+        plataforma: "Paramount+",
+        poster: "https://image.tmdb.org/t/p/w500/2cxhvwyEwRlysAmRH4iodkvo0z5.jpg",
+        youtubeEmbed: "https://www.youtube.com/embed/4rgYUipGJNo"
+      },
+      {
+        titulo: "Ruptura (Severance)",
+        tipo: "serie",
+        ano: "2025",
+        notaImdb: "8.7",
+        imdbId: "tt11280740",
+        plataforma: "Apple TV+",
+        poster: "https://image.tmdb.org/t/p/w500/pPHpeI2X1qEd1CS1SeyrdhZ4qnT.jpg",
+        youtubeEmbed: "https://www.youtube.com/embed/xEQP4VVuyrY"
+      }
+    ];
+
+    let categoriaAtual = "todos";
+
+    function renderizarCatalogo(lista) {
+      const grid = document.getElementById("moviesGrid");
+      grid.innerHTML = "";
+
+      lista.forEach(item => {
+        const imdbUrl = item.imdbId
+          ? `https://www.imdb.com/title/${item.imdbId}/`
+          : `https://www.imdb.com/find/?q=${encodeURIComponent(item.titulo)}`;
+
+        const card = document.createElement("div");
+        card.className = "bg-slate-900 rounded-2xl overflow-hidden border border-slate-800 flex flex-col justify-between card-hover";
+        card.innerHTML = `
+          <div>
+            <div class="relative aspect-[2/3] bg-slate-800 overflow-hidden">
+              <img src="${item.poster}" alt="${item.titulo}" class="w-full h-full object-cover" loading="lazy" />
+              <div class="absolute top-2.5 left-2.5 imdb-badge px-2 py-0.5 rounded text-xs flex items-center gap-1 shadow">
+                <i class="fa-solid fa-star text-[10px]"></i> ${item.notaImdb}
+              </div>
+              <div class="absolute top-2.5 right-2.5 bg-slate-950/85 backdrop-blur px-2.5 py-0.5 rounded text-[11px] font-bold text-indigo-300 border border-slate-700">
+                ${item.plataforma}
+              </div>
+            </div>
+            <div class="p-4">
+              <h3 class="font-bold text-base line-clamp-1" title="${item.titulo}">${item.titulo}</h3>
+              <p class="text-xs text-slate-400 mt-0.5">${item.ano} • ${item.tipo === 'filme' ? 'Filme' : 'Série'}</p>
+            </div>
+          </div>
+          <div class="px-4 pb-4 flex flex-col gap-2">
+            <button onclick="abrirTrailer('${item.titulo.replace(/'/g, "\\'")}', '${item.youtubeEmbed || ""}', '${item.tmdbId || ""}', '${item.tipo || ""}')"
+                    class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-2 rounded-xl text-xs transition flex items-center justify-center gap-1.5">
+              <i class="fa-solid fa-play"></i> Ver Trailer
+            </button>
+            <a href="${imdbUrl}" target="_blank" rel="noopener noreferrer"
+               class="w-full bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold py-1.5 rounded-xl text-[11px] text-center transition">
+              Ver ficha no IMDb <i class="fa-solid fa-arrow-up-right-from-square text-[9px] ml-1"></i>
+            </a>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function setCategoria(cat) {
+      categoriaAtual = cat;
+      ["todos", "filme", "serie"].forEach(c => {
+        const btn = document.getElementById(`btn-${c}`);
+        if (c === cat) {
+          btn.className = "px-3 py-1.5 rounded-lg text-xs font-bold bg-indigo-600 text-white transition";
+        } else {
+          btn.className = "px-3 py-1.5 rounded-lg text-xs font-bold text-slate-400 hover:text-white transition";
+        }
+      });
+      filtrarCatalogo();
+    }
+
+    function filtrarCatalogo() {
+      const termo = document.getElementById("searchInput").value.toLowerCase();
+      const filtrados = catalogoFilmes.filter(item => {
+        const bateCategoria = categoriaAtual === "todos" || item.tipo === categoriaAtual;
+        const bateBusca = item.titulo.toLowerCase().includes(termo);
+        return bateCategoria && bateBusca;
+      });
+      renderizarCatalogo(filtrados);
+    }
+
+    // =========================================================================
+    // 3. MODAL DE TRAILER OU REDIRECIONAMENTO YOUTUBE
+    // =========================================================================
+    async function abrirTrailer(titulo, embedUrl, tmdbId, tipo) {
+      if (embedUrl) {
+        document.getElementById("modalTitle").innerText = `Trailer: ${titulo}`;
+        document.getElementById("trailerIframe").src = `${embedUrl}?autoplay=1`;
+        document.getElementById("trailerModal").classList.remove("hidden");
+        return;
+      }
+
+      // Se não tem embedUrl fixo, mas tem ID do TMDB e Chave, busca trailer oficial no TMDB
+      if (tmdbId && TMDB_API_KEY) {
+        try {
+          const endpoint = tipo === "serie" ? "tv" : "movie";
+          const res = await fetch(`https://api.themoviedb.org/3/${endpoint}/${tmdbId}/videos?api_key=${TMDB_API_KEY}&language=pt-BR`);
+          const data = await res.json();
+          let trailer = data.results && data.results.find(v => v.site === "YouTube" && (v.type === "Trailer" || v.type === "Teaser"));
+
+          // Se não houver trailer dublado/pt-BR, tenta no áudio original
+          if (!trailer) {
+            const resEn = await fetch(`https://api.themoviedb.org/3/${endpoint}/${tmdbId}/videos?api_key=${TMDB_API_KEY}`);
+            const dataEn = await resEn.json();
+            trailer = dataEn.results && dataEn.results.find(v => v.site === "YouTube" && (v.type === "Trailer" || v.type === "Teaser"));
+          }
+
+          if (trailer && trailer.key) {
+            document.getElementById("modalTitle").innerText = `Trailer Oficial: ${titulo}`;
+            document.getElementById("trailerIframe").src = `https://www.youtube.com/embed/${trailer.key}?autoplay=1`;
+            document.getElementById("trailerModal").classList.remove("hidden");
+            return;
+          }
+        } catch (e) {
+          console.warn("Trailer TMDB não encontrado, usando busca externa:", e);
+        }
+      }
+
+      // Fallback padrão se não houver embed disponível
+      window.open(`https://www.youtube.com/results?search_query=${encodeURIComponent(titulo + " trailer oficial dublado")}`, "_blank");
+    }
+
+    function fecharModal() {
+      document.getElementById("trailerIframe").src = "";
+      document.getElementById("trailerModal").classList.add("hidden");
+    }
+
+    // =========================================================================
+    // 4. CALCULADORA DE ECONOMIA
+    // =========================================================================
+    function selecionarTodas(marcar) {
+      const checks = document.querySelectorAll("#streamingCheckboxes input[type='checkbox']");
+      checks.forEach(c => c.checked = marcar);
+      calcularEconomia();
+    }
+
+    function calcularEconomia() {
+      const checks = document.querySelectorAll("#streamingCheckboxes input[type='checkbox']:checked");
+      let total = 0;
+      checks.forEach(c => total += parseFloat(c.value));
+
+      const precoApp = 25.00;
+      const economiaMes = Math.max(0, total - precoApp);
+      const economiaAno = economiaMes * 12;
+
+      document.getElementById("totalSeparado").innerText = `R$ ${total.toFixed(2).replace('.', ',')} /mês`;
+      document.getElementById("economiaMensal").innerText = `R$ ${economiaMes.toFixed(2).replace('.', ',')} por mês`;
+      document.getElementById("economiaAnual").innerText = `Mais de R$ ${economiaAno.toFixed(2).replace('.', ',')} no seu bolso por ano!`;
+    }
+
+    // =========================================================================
+    // 5. MODAL DE PROMOÇÃO POR TEMPO LIMITADO
+    // =========================================================================
+    function abrirPromo() {
+      document.getElementById("promoModal").classList.remove("hidden");
+      document.body.style.overflow = "hidden";
+    }
+
+    function fecharPromo(event) {
+      if (event && event.target !== event.currentTarget) return;
+      document.getElementById("promoModal").classList.add("hidden");
+      document.body.style.overflow = "";
+    }
+
+    function iniciarContadorPromo() {
+      const horasEl = document.getElementById("promoHoras");
+      const minutosEl = document.getElementById("promoMinutos");
+      const segundosEl = document.getElementById("promoSegundos");
+      const chaveExpiracao = "zetaPromoExpires";
+
+      let dataExpiracao = localStorage.getItem(chaveExpiracao);
+
+      if (!dataExpiracao) {
+        const agora = new Date().getTime();
+        const vinteQuatroHoras = 24 * 60 * 60 * 1000;
+        dataExpiracao = (agora + vinteQuatroHoras).toString();
+        localStorage.setItem(chaveExpiracao, dataExpiracao);
+      }
+
+      const expiraEm = parseInt(dataExpiracao);
+
+      function atualizarContador() {
+        const agora = new Date().getTime();
+        let diferenca = expiraEm - agora;
+
+        if (diferenca <= 0) {
+          diferenca = 0;
+          horasEl.innerText = "00";
+          minutosEl.innerText = "00";
+          segundosEl.innerText = "00";
+          clearInterval(intervalo);
+          return;
+        }
+
+        const horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutos = Math.floor((diferenca % (1000 * 60)) / (1000 * 60));
+        const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
+
+        horasEl.innerText = horas.toString().padStart(2, "0");
+        minutosEl.innerText = minutos.toString().padStart(2, "0");
+        segundosEl.innerText = segundos.toString().padStart(2, "0");
+      }
+
+      const intervalo = setInterval(atualizarContador, 1000);
+      atualizarContador();
+    }
+
+    // =========================================================================
+    // 6. INTEGRAÇÃO EM TEMPO REAL COM TMDB API
+    // =========================================================================
+    async function carregarTendenciasTMDB() {
+      if (!TMDB_API_KEY) return;
+      try {
+        const res = await fetch(`https://api.themoviedb.org/3/trending/all/week?api_key=${TMDB_API_KEY}&language=pt-BR`);
+        const data = await res.json();
+        if (data.results && data.results.length > 0) {
+          catalogoFilmes = data.results
+            .filter(item => item.poster_path && (item.title || item.name))
+            .slice(0, 16)
+            .map(item => ({
+              tmdbId: item.id,
+              titulo: item.title || item.name,
+              tipo: item.media_type === "tv" ? "serie" : "filme",
+              ano: (item.release_date || item.first_air_date || "2025").substring(0, 4),
+              notaImdb: item.vote_average ? item.vote_average.toFixed(1) : "8.0",
+              imdbId: "",
+              plataforma: "ZETA PLAY",
+              poster: `https://image.tmdb.org/t/p/w500${item.poster_path}`,
+              youtubeEmbed: ""
+            }));
+          renderizarCatalogo(catalogoFilmes);
+        }
+      } catch (err) {
+        console.warn("Usando catálogo padrão:", err);
+      }
+    }
+
+    // Inicializar página
+    renderizarCatalogo(catalogoFilmes);
+    calcularEconomia();
+    carregarTendenciasTMDB();
+    iniciarContadorPromo();
+
+    // Abrir popup automaticamente após 2 segundos
+    window.addEventListener("load", () => {
+      setTimeout(() => {
+        abrirPromo();
+      }, 2000);
+    });
+  </script>
+</body>
+</html>
