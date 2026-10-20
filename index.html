@@ -553,6 +553,7 @@
       {
         titulo: "Duna: Parte Dois",
         tipo: "filme",
+        dataLancamento: "2024-02-29",
         ano: "2024",
         notaImdb: "8.5",
         imdbId: "tt15239678",
@@ -563,6 +564,7 @@
       {
         titulo: "Deadpool & Wolverine",
         tipo: "filme",
+        dataLancamento: "2024-07-25",
         ano: "2024",
         notaImdb: "7.7",
         imdbId: "tt6263850",
@@ -573,6 +575,7 @@
       {
         titulo: "The Last of Us",
         tipo: "serie",
+        dataLancamento: "2023-01-15",
         ano: "2023",
         notaImdb: "8.7",
         imdbId: "tt3581920",
@@ -583,6 +586,7 @@
       {
         titulo: "Oppenheimer",
         tipo: "filme",
+        dataLancamento: "2023-07-20",
         ano: "2023",
         notaImdb: "8.9",
         imdbId: "tt15398776",
@@ -593,6 +597,7 @@
       {
         titulo: "The Boys",
         tipo: "serie",
+        dataLancamento: "2019-07-26",
         ano: "2024",
         notaImdb: "8.7",
         imdbId: "tt1190634",
@@ -603,6 +608,7 @@
       {
         titulo: "Round 6 (Squid Game)",
         tipo: "serie",
+        dataLancamento: "2021-09-17",
         ano: "2024",
         notaImdb: "8.0",
         imdbId: "tt10919420",
@@ -613,6 +619,7 @@
       {
         titulo: "Gladiador II",
         tipo: "filme",
+        dataLancamento: "2024-11-14",
         ano: "2024",
         notaImdb: "6.8",
         imdbId: "tt9218128",
@@ -623,6 +630,7 @@
       {
         titulo: "Ruptura (Severance)",
         tipo: "serie",
+        dataLancamento: "2022-02-18",
         ano: "2025",
         notaImdb: "8.7",
         imdbId: "tt11280740",
@@ -635,6 +643,26 @@
     let categoriaAtual = "todos";
     let catalogoTendencias = [...catalogoFilmes];
     let debounceBuscaTimer = null;
+
+    function formatarDataLancamento(dataString) {
+      if (!dataString) return "Em breve";
+      const partes = dataString.split("-");
+      if (partes.length === 3) {
+        const ano = parseInt(partes[0], 10);
+        const mes = parseInt(partes[1], 10) - 1;
+        const dia = parseInt(partes[2], 10);
+        const meses = [
+          "Jan.", "Fev.", "Mar.", "Abr.", "Mai.", "Jun.",
+          "Jul.", "Ago.", "Set.", "Out.", "Nov.", "Dez."
+        ];
+        if (!isNaN(dia) && mes >= 0 && mes <= 11 && !isNaN(ano)) {
+          return `${dia} de ${meses[mes]} de ${ano}`;
+        }
+      } else if (partes.length === 1 && partes[0].length === 4) {
+        return partes[0];
+      }
+      return dataString;
+    }
 
     function renderizarCatalogo(lista, termoBusca = "") {
       const grid = document.getElementById("moviesGrid");
@@ -680,7 +708,7 @@
             </div>
             <div class="p-4">
               <h3 class="font-bold text-base line-clamp-1" title="${item.titulo}">${item.titulo}</h3>
-              <p class="text-xs text-slate-400 mt-0.5">${item.ano} • ${item.tipo === 'filme' ? 'Filme' : 'Série'}</p>
+              <p class="text-xs text-slate-400 mt-0.5">${formatarDataLancamento(item.dataLancamento || item.ano)} • ${item.tipo === 'filme' ? 'Filme' : 'Série'}</p>
             </div>
           </div>
           <div class="px-4 pb-4 flex flex-col gap-2">
@@ -724,6 +752,7 @@
               tmdbId: item.id,
               titulo: item.title || item.name,
               tipo: item.media_type === "tv" ? "serie" : "filme",
+              dataLancamento: item.release_date || item.first_air_date || "",
               ano: (item.release_date || item.first_air_date || "").substring(0, 4) || "—",
               notaImdb: item.vote_average ? item.vote_average.toFixed(1) : "—",
               imdbId: "",
@@ -916,6 +945,7 @@
               tmdbId: item.id,
               titulo: item.title || item.name,
               tipo: item.media_type === "tv" ? "serie" : "filme",
+              dataLancamento: item.release_date || item.first_air_date || "",
               ano: (item.release_date || item.first_air_date || "2025").substring(0, 4),
               notaImdb: item.vote_average ? item.vote_average.toFixed(1) : "8.0",
               imdbId: "",
