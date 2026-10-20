@@ -633,10 +633,32 @@
     ];
 
     let categoriaAtual = "todos";
+    let catalogoTendencias = [...catalogoFilmes];
+    let debounceBuscaTimer = null;
 
-    function renderizarCatalogo(lista) {
+    function renderizarCatalogo(lista, termoBusca = "") {
       const grid = document.getElementById("moviesGrid");
       grid.innerHTML = "";
+
+      if (!lista || lista.length === 0) {
+        const termoEscapado = termoBusca.replace(/'/g, "\\'");
+        grid.innerHTML = `
+          <div class="col-span-full py-12 px-4 text-center bg-slate-900/60 rounded-2xl border border-slate-800">
+            <div class="w-16 h-16 mx-auto mb-3 rounded-full bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-2xl">
+              <i class="fa-solid fa-film"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white">Nenhum título encontrado ${termoBusca ? `para "${termoBusca}"` : ""}</h3>
+            <p class="text-slate-400 text-sm mt-1.5 max-w-md mx-auto">
+              Temos um acervo gigantesco com mais de 80.000 títulos atualizados na ZETA PLAY!
+            </p>
+            <button onclick="abrirWhatsApp('Olá! Procurei por ${termoEscapado || "um filme"} no site e gostaria de saber se está disponível no Teste Grátis!')"
+                    class="mt-5 inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-sm px-6 py-3 rounded-xl transition shadow-lg shadow-emerald-500/20">
+              <i class="fa-brands fa-whatsapp text-lg"></i> Consultar "${termoBusca || "Título"}" no Teste Grátis
+            </button>
+          </div>
+        `;
+        return;
+      }
 
       lista.forEach(item => {
         const imdbUrl = item.imdbId
@@ -689,14 +711,67 @@
       filtrarCatalogo();
     }
 
+    async function buscarNoTMDB(termo) {
+      if (!TMDB_API_KEY) return [];
+      try {
+        const res = await fetch(`https://api.themoviedb.org/3/search/multi?api_key=${TMDB_API_KEY}&query=${encodeURIComponent(termo)}&language=pt-BR&include_adult=false`);
+        const data = await res.json();
+        if (data.results && data.results.length > 0) {
+          return data.results
+            .filter(item => (item.media_type === "movie" || item.media_type === "tv") && item.poster_path && (item.title || item.name))
+            .slice(0, 16)
+            .map(item => ({
+              tmdbId: item.id,
+              titulo: item.title || item.name,
+              tipo: item.media_type === "tv" ? "serie" : "filme",
+              ano: (item.release_date || item.first_air_date || "").substring(0, 4) || "—",
+              notaImdb: item.vote_average ? item.vote_average.toFixed(1) : "—",
+              imdbId: "",
+              plataforma: "ZETA PLAY",
+              poster: `https://image.tmdb.org/t/p/w500${item.poster_path}`,
+              youtubeEmbed: ""
+            }));
+        }
+      } catch (err) {
+        console.warn("Erro na busca do TMDB:", err);
+      }
+      return [];
+    }
+
     function filtrarCatalogo() {
-      const termo = document.getElementById("searchInput").value.toLowerCase();
-      const filtrados = catalogoFilmes.filter(item => {
-        const bateCategoria = categoriaAtual === "todos" || item.tipo === categoriaAtual;
-        const bateBusca = item.titulo.toLowerCase().includes(termo);
-        return bateCategoria && bateBusca;
-      });
-      renderizarCatalogo(filtrados);
+      const termo = document.getElementById("searchInput").value.trim();
+
+      clearTimeout(debounceBuscaTimer);
+
+      if (termo.length < 2) {
+        const base = catalogoTendencias.length > 0 ? catalogoTendencias : catalogoFilmes;
+        const filtrados = base.filter(item => categoriaAtual === "todos" || item.tipo === categoriaAtual);
+        renderizarCatalogo(filtrados);
+        return;
+      }
+
+      // Indicador de busca em andamento
+      const grid = document.getElementById("moviesGrid");
+      grid.innerHTML = `
+        <div class="col-span-full py-16 text-center text-slate-400">
+          <i class="fa-solid fa-circle-notch fa-spin text-3xl text-indigo-500 mb-3"></i>
+          <p class="text-sm font-semibold text-slate-300">Buscando "${termo}" no catálogo ZETA PLAY...</p>
+        </div>
+      `;
+
+      debounceBuscaTimer = setTimeout(async () => {
+        let resultados = await buscarNoTMDB(termo);
+
+        // Fallback para filtro local caso a API não retorne
+        if (resultados.length === 0) {
+          const termoLower = termo.toLowerCase();
+          const base = catalogoTendencias.length > 0 ? catalogoTendencias : catalogoFilmes;
+          resultados = base.filter(item => item.titulo.toLowerCase().includes(termoLower));
+        }
+
+        const filtrados = resultados.filter(item => categoriaAtual === "todos" || item.tipo === categoriaAtual);
+        renderizarCatalogo(filtrados, termo);
+      }, 350);
     }
 
     // =========================================================================
@@ -834,7 +909,7 @@
         const res = await fetch(`https://api.themoviedb.org/3/trending/all/week?api_key=${TMDB_API_KEY}&language=pt-BR`);
         const data = await res.json();
         if (data.results && data.results.length > 0) {
-          catalogoFilmes = data.results
+          catalogoTendencias = data.results
             .filter(item => item.poster_path && (item.title || item.name))
             .slice(0, 16)
             .map(item => ({
@@ -848,7 +923,13 @@
               poster: `https://image.tmdb.org/t/p/w500${item.poster_path}`,
               youtubeEmbed: ""
             }));
-          renderizarCatalogo(catalogoFilmes);
+          catalogoFilmes = [...catalogoTendencias];
+
+          // Só re-renderiza se o usuário não estiver com uma busca ativa digitada
+          const termo = document.getElementById("searchInput").value.trim();
+          if (termo.length < 2) {
+            renderizarCatalogo(catalogoFilmes);
+          }
         }
       } catch (err) {
         console.warn("Usando catálogo padrão:", err);
