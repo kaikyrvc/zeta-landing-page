@@ -48,7 +48,7 @@
   <header class="fixed top-0 w-full z-40 bg-slate-950/85 backdrop-blur-md border-b border-slate-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
       <div class="flex items-center gap-2.5">
-        <span class="text-2xl">📺</span>
+        <img src="logo.png" alt="ZETA PLAY" class="h-8 w-auto" />
         <span class="font-extrabold text-2xl tracking-wider bg-gradient-to-r from-indigo-400 via-purple-400 to-emerald-400 bg-clip-text text-transparent">
           ZETA PLAY
         </span>
@@ -891,33 +891,31 @@
       const minutosEl = document.getElementById("promoMinutos");
       const segundosEl = document.getElementById("promoSegundos");
       const chaveExpiracao = "zetaPromoExpires";
+      const vinteQuatroHoras = 24 * 60 * 60 * 1000;
 
       let dataExpiracao = localStorage.getItem(chaveExpiracao);
 
-      if (!dataExpiracao) {
+      if (!dataExpiracao || parseInt(dataExpiracao) <= new Date().getTime()) {
         const agora = new Date().getTime();
-        const vinteQuatroHoras = 24 * 60 * 60 * 1000;
         dataExpiracao = (agora + vinteQuatroHoras).toString();
         localStorage.setItem(chaveExpiracao, dataExpiracao);
       }
 
-      const expiraEm = parseInt(dataExpiracao);
+      let expiraEm = parseInt(dataExpiracao);
 
       function atualizarContador() {
         const agora = new Date().getTime();
         let diferenca = expiraEm - agora;
 
+        // Quando chegar a zero, reinicia o contador com mais 24 horas
         if (diferenca <= 0) {
-          diferenca = 0;
-          horasEl.innerText = "00";
-          minutosEl.innerText = "00";
-          segundosEl.innerText = "00";
-          clearInterval(intervalo);
-          return;
+          expiraEm = agora + vinteQuatroHoras;
+          localStorage.setItem(chaveExpiracao, expiraEm.toString());
+          diferenca = vinteQuatroHoras;
         }
 
         const horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutos = Math.floor((diferenca % (1000 * 60)) / (1000 * 60));
+        const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
         const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
 
         horasEl.innerText = horas.toString().padStart(2, "0");
