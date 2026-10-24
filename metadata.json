@@ -1,0 +1,8 @@
+{
+  "name": "ZETA PLAY",
+  "description": "Mais Entretenimento, Menos Gastos - Filmes, Séries, Canais ao Vivo e Futebol em um só aplicativo.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
